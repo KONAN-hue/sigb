@@ -96,8 +96,11 @@ class UtilisateurController extends Controller
         $validated = $request->validate([
             'nom' => 'required|string|max:255',
             'email' => 'required|email|unique:utilisateurs,email',
-            // Ajoutez d'autres champs selon votre modèle
+            'password' => 'required|string|min:6',
+            'role' => 'required|string'
         ]);
+
+        $validated['password'] = bcrypt($validated['password']);
 
         $utilisateur = Utilisateur::create($validated);
 

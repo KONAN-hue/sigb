@@ -17,3 +17,6 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/utilisateurs/{utilisateur}', [UtilisateurController::class, 'update']);
     Route::delete('/utilisateurs/{utilisateur}', [UtilisateurController::class, 'destroy']);
 });
+
+// Inscription libre (role = user)
+Route::post('/register', [AuthController::class, 'register']);
